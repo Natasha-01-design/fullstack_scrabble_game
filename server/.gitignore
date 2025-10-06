@@ -20,4 +20,4 @@ ENV/
 .vscode/
 .idea/
 
-app/config.py
+#app/config.py
