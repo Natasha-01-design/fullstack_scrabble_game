@@ -15,7 +15,7 @@ function WinnerPage() {
         body: JSON.stringify({ game_id: gameId }),
       })
         .then(res => res.json())
-        .then(data => console.log("✅ Game marked completed:", data))
+        .then(data => console.log(" Game marked completed:", data))
         .catch(err => console.error("Error completing game:", err));
     }
   }, [gameId]);
