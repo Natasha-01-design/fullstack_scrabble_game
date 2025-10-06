@@ -1,0 +1,23 @@
+# Ignore all .env files
+.env
+*.env
+
+# Ignore .venv directories (anywhere in repo, nested too)
+.venv/
+**/.venv/
+
+# Common Python ignores
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtualenv (if not using .venv)
+venv/
+ENV/
+
+# IDE files
+.vscode/
+.idea/
+
+app/config.py
