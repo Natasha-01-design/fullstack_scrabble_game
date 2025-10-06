@@ -7,7 +7,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
 
-  // ---- Word validation + fetch users ----
+  
   useEffect(() => {
     console.log("--- Running word validation test ---");
 
@@ -29,7 +29,7 @@ const Home = () => {
       .catch((error) => console.error("Error fetching users:", error));
   }, []);
 
-  // ---- New game (API call) ----
+
   const newGame = async () => {
     try {
       const res = await fetch("http://localhost:5000/new-game", {
