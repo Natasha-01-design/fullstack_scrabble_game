@@ -228,7 +228,7 @@ function Game() {
   useEffect(() => {
     if (!choiceMade) return;
     if (currentPlayer?.name === "Computer") {
-      const runAI = async () => {
+      const runComputer = async () => {
         const bestMove = await Computer(
           { board, playedWords, tileBag },
           currentPlayer.rack,
@@ -269,7 +269,7 @@ function Game() {
         await saveGameState("ongoing");
         handleTurnAdvance();
       };
-      setTimeout(runAI, 300);
+      setTimeout(runComputer, 300);
     }
   }, [currentPlayerIndex, choiceMade]);
 
