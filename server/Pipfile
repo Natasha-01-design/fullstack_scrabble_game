@@ -11,6 +11,7 @@ psycopg = {extras = ["pool", "binary"], version = "*"}
 python-dotenv = "*"
 flask-cors = "*"
 flask-bcrypt = "*"
+sqlalchemy-serializer = "*"
 
 [dev-packages]
 
