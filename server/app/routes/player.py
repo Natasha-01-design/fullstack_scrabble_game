@@ -67,6 +67,7 @@ def signup():
     )
     db.session.add(new_player)
     db.session.commit()
+    
 
     session["player_id"] = new_player.id
     return new_player.to_dict(), 201

@@ -51,9 +51,7 @@ function Game() {
   const [lastSavedScores, setLastSavedScores] = useState({ human: 0, computer: 0 });
 
   const currentPlayer = players[currentPlayerIndex];
-  const MAX_TURNS = 5;
 
-  
   useEffect(() => {
     const loadLastGame = async () => {
       try {
@@ -88,7 +86,6 @@ function Game() {
     loadLastGame();
   }, []);
 
-  
   const saveGameState = async (status = "ongoing") => {
     if (!players.length) return;
 
@@ -128,7 +125,6 @@ function Game() {
     }
   };
 
-  
   const refillRack = (rack, bag) => {
     const newRack = [...rack];
     while (newRack.length < 7 && bag.length > 0) {
@@ -144,8 +140,10 @@ function Game() {
     const newCounts = [...turnCounts];
     newCounts[currentPlayerIndex] += 1;
 
-    
-    if (passCount >= 4 || (tileBag.length === 0 && currentPlayer.rack.length === 0)) {
+    const totalTurns = newCounts[0] + newCounts[1];
+
+    //  end
+    if (totalTurns >= 10) {
       const winner =
         players[0].score > players[1]?.score
           ? players[0].name
@@ -160,6 +158,7 @@ function Game() {
       return;
     }
 
+    // Save state and advance turn
     await saveGameState("ongoing");
     setTurnCounts(newCounts);
     setCurrentPlayerIndex((currentPlayerIndex + 1) % players.length);
@@ -172,7 +171,6 @@ function Game() {
     await handleTurnAdvance();
   };
 
-  
   const startNewGame = async (mode) => {
     if (gameId) {
       alert("Resuming your existing game!");
@@ -224,7 +222,7 @@ function Game() {
     }
   };
 
-  // Computer
+  // Computer turn logic
   useEffect(() => {
     if (!choiceMade) return;
     if (currentPlayer?.name === "Computer") {
@@ -273,7 +271,7 @@ function Game() {
     }
   }, [currentPlayerIndex, choiceMade]);
 
-  // human 
+  // Human play word handler
   const handlePlayWord = async (playWordFn) => {
     const move = await playWordFn();
     if (!move || move.error) {
